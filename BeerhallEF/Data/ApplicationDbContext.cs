@@ -9,6 +9,8 @@ namespace BeerhallEF.Data
         public DbSet<Brewer> Brewers { get; set; }
         // public DbSet<Beer> Beers { get; set; }
         public DbSet<Location> Locations { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,6 +24,7 @@ namespace BeerhallEF.Data
             modelBuilder.ApplyConfiguration(new BrewerConfiguration());
             modelBuilder.ApplyConfiguration(new BeerConfiguration());
             modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseConfiguration());
         }
         
     }

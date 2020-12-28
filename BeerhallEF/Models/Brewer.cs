@@ -18,6 +18,7 @@ namespace BeerhallEF.Models
 
         #region Collections
         public ICollection<Beer> Beers { get; private set; }
+        public ICollection<Course> Courses { get; private set; }
         #endregion
 
         #region Getters
@@ -31,6 +32,7 @@ namespace BeerhallEF.Models
         protected Brewer()
         {
             Beers = new HashSet<Beer>();
+            Courses = new HashSet<Course>();
         }
     }
 }
