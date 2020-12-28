@@ -33,6 +33,11 @@ namespace BeerhallEF.Data.Mapping
             builder.Property(t => t.BrewerId)
                 .ValueGeneratedOnAdd();
 
+            builder.HasMany(t => t.Beers)
+                .WithOne()
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }
