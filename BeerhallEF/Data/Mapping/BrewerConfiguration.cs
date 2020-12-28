@@ -19,6 +19,7 @@ namespace BeerhallEF.Data.Mapping
             // builder.HasKey(t => new {t.BrewerId, t.ContactEmail}); // voor meerdere keys
 
             //properties
+            #region Properties
             builder.Property(t => t.Name)
                 .HasColumnName("BrewerName")
                 .IsRequired()
@@ -32,11 +33,20 @@ namespace BeerhallEF.Data.Mapping
 
             builder.Property(t => t.BrewerId)
                 .ValueGeneratedOnAdd();
+            #endregion
 
+            #region Associations
             builder.HasMany(t => t.Beers)
                 .WithOne()
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(t => t.Location)
+                .WithMany()
+                .HasForeignKey(nameof(Location.PostalCode))
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
+               #endregion
 
         }
     }

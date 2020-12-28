@@ -14,11 +14,21 @@ namespace BeerhallEF.Models
         public DateTime? DateEstablished { get; set; }
         public string Street { get; set; }
         public int? Turnover { get; set; }
+        #endregion
+
+        #region Collections
         public ICollection<Beer> Beers { get; private set; }
+        #endregion
+
+        #region Getters
         public int NrOfBeers => Beers.Count;
         #endregion
 
-        public Brewer()
+        #region Navigational Properties
+        public Location Location { get; set; }
+        #endregion
+
+        protected Brewer()
         {
             Beers = new HashSet<Beer>();
         }
